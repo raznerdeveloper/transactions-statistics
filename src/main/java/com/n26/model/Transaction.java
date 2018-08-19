@@ -11,6 +11,14 @@ import java.util.Date;
 @Setter
 public class Transaction {
 
+    public Transaction() {
+    }
+
+    public Transaction(@NotNull Double amount, @NotNull @PastOrPresent Date timestamp) {
+        this.amount = amount;
+        this.timestamp = timestamp;
+    }
+
     @NotNull
     private Double amount;
 

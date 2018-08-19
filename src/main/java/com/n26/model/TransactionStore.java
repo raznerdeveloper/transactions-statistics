@@ -26,7 +26,6 @@ public class TransactionStore {
         this.count = 0;
     }
 
-
     public void addTransaction(Transaction transaction) {
         Double amount = transaction.getAmount();
         this.minimum = Math.min(transaction.getAmount(), this.minimum);
