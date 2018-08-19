@@ -25,4 +25,12 @@ public class Transaction {
     @NotNull
     @PastOrPresent
     private Date timestamp;
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "amount=" + amount +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }

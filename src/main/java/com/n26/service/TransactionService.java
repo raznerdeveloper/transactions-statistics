@@ -16,8 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TransactionService {
 
     private static final long SIXTY_SECONDS = 60 * 1000;
-
     private static final int BUCKET_SIZE = 60;
+
     private static final Map<Integer, TransactionStore> transactionBuckets = new ConcurrentHashMap<>(BUCKET_SIZE);
 
     public void addTransaction(Transaction transaction) throws StaleTransactionException {
