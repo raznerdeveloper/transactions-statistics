@@ -1,9 +1,11 @@
 package com.n26.controller;
 
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.n26.exception.StaleTransactionException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,9 +19,19 @@ public class RestExceptionProcessor {
     public void invalidRequestBody(){
     }
 
-    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ExceptionHandler(JsonParseException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public void invalidJson(){
+    }
+
+    @ExceptionHandler(MismatchedInputException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public void handleAnyException(){
+    }
+
+    @ExceptionHandler(InvalidFormatException.class)
+    @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
+    public void invalidFormat(){
     }
 
     @ExceptionHandler(StaleTransactionException.class)

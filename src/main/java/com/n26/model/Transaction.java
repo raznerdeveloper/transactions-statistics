@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Getter
@@ -13,7 +12,7 @@ import java.util.Date;
 public class Transaction {
 
     @NotNull
-    private BigDecimal amount;
+    private Double amount;
 
     @NotNull
     @PastOrPresent
