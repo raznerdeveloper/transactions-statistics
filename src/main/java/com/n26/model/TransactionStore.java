@@ -3,6 +3,8 @@ package com.n26.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 public class TransactionStore {
@@ -14,6 +16,8 @@ public class TransactionStore {
     private Double minimum;
 
     private long count;
+
+    private Date timestamp;
 
     public TransactionStore() {
         this.sum = 0.0;
@@ -29,5 +33,6 @@ public class TransactionStore {
         this.maximum = Math.max(transaction.getAmount(), this.maximum);
         this.sum += amount;
         this.count += 1;
+        this.timestamp = transaction.getTimestamp();
     }
 }

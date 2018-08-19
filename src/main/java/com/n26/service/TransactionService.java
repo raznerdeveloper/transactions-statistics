@@ -46,7 +46,9 @@ public class TransactionService {
     }
 
     public Statistics getStatistics() {
+        long sixtySecondsAgo = System.currentTimeMillis() - SIXTY_SECONDS;
         TransactionStore storeSummary = transactionBuckets.values().stream()
+                .filter(transactionStore -> transactionStore.getTimestamp().getTime() > sixtySecondsAgo)
                 .reduce(new TransactionStore(), (transactionStore, transactionStore2) -> {
                     transactionStore.setSum(transactionStore.getSum() + transactionStore2.getSum());
                     transactionStore.setMinimum(
